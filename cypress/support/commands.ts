@@ -38,9 +38,9 @@ Cypress.Commands.add('init', () => {
   cy.server();
 
   cy.route({
-    method: 'DELETE',
-    url: '**/api/authorization'
-  }).as('deleteAuthorizationCheck');
+    method: 'GET',
+    url: '**/users'
+  }).as('fetchUsersCheck');
 
   cy.clearLocalStorage()
     .clearCookies()

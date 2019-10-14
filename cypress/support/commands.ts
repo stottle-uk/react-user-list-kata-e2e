@@ -42,6 +42,11 @@ Cypress.Commands.add('init', () => {
     url: '**/users'
   }).as('fetchUsersCheck');
 
+  cy.route({
+    method: 'POST',
+    url: '**/users/**'
+  }).as('updateUserCheck');
+
   cy.clearLocalStorage()
     .clearCookies()
     .visit('/');

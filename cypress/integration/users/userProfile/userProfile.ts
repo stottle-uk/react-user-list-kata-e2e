@@ -33,16 +33,10 @@ And('I update the first name to a new valid value and save', () => {
 
 And('Network request to update user is made', () => {
   cy.wait('@updateUserCheck').then(xhr => {
-    expect(xhr.request.body).to.deep.eq({
-      address: '6101 Morris Way',
-      country: 'Germany',
-      county: 'Borders',
-      email: 'Guiseppe_OConner@gmail.com',
-      firstName: 'new name',
-      id: '4992ec65-cc4d-40ed-84fe-10fd21349d4b',
-      lastName: 'Bergstrom',
-      postcode: '12188',
-      username: 'Aida.Senger'
+    const body = xhr.request.body as any;
+    expect(body).to.deep.eq({
+      ...body,
+      firstName: 'new name'
     });
   });
 });

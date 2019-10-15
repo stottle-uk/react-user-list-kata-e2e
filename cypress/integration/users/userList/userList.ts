@@ -17,6 +17,12 @@ When('I Navigate to the users list page', () => {
 
 Then('I can see a list of the users in alphabetical order', () => {
   cy.wait('@fetchUsersCheck').then(xhr => {
+    /* 
+    This isn’t great as the API could return a 500 at random 
+    and cypress will only wait for the first response (not a valid response) 
+    This test will occasionally fail as we have inconsistent behavior from the API and inconsistencies are not good when testing.
+    We could mock the API response with cypress, but then it is not a true e2e test
+    */
     const data = xhr.response.body as any[];
     const firstUserAlpha = data.sort(byUsername)[0];
     cy.get(`[data-e2e=${userList}]`)

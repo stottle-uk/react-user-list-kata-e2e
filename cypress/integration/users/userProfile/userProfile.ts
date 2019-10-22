@@ -8,7 +8,7 @@ import {
 } from '../../common/testLocators';
 
 And('I Navigate to the users list page', () => {
-  // do nothing - we're on it, but we could navigate the user to the page here
+  cy.visit('/users');
 });
 
 When('I select the first user in the list', () => {

@@ -12,7 +12,7 @@ const byUsername = (a: any, b: any) => {
 };
 
 When('I Navigate to the users list page', () => {
-  // do nothing - we're on it, but we could navigated the user to the app here
+  cy.visit('/users');
 });
 
 Then('I can see a list of the users in alphabetical order', () => {
